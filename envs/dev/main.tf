@@ -11,8 +11,8 @@ module "ai_squad_server" {
   enable_public_ip = false
 
   # Optional: if you have a custom VPC/subnet, set these.
-  # network    = "default"
-  # subnetwork = null
+  network    = var.network
+  subnetwork = var.network
 
   data_disk_size_gb = 100
 

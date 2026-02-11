@@ -78,5 +78,7 @@ pre-commit run --all-files
 SSH from the cli
 
 ```bash
-gcloud compute ssh <server-name>
+gcloud compute ssh <server-name> \
+  --zone <zone> \
+  --tunnel-through-iap
 ```

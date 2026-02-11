@@ -13,3 +13,8 @@ variable "impersonate_service_account" {
   type        = string
   default     = null
 }
+
+variable "network" {
+  description = "server network"
+  type        = string
+}

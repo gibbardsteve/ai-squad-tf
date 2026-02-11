@@ -55,6 +55,12 @@ resource "google_compute_instance" "vm" {
       scopes = var.service_account_scopes
     }
   }
+
+  lifecycle {
+    ignore_changes = [
+      attached_disk,
+    ]
+  }
 }
 
 resource "google_compute_attached_disk" "data_attach" {
