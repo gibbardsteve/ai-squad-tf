@@ -48,3 +48,27 @@ Destroy resources.
 ```bash
 terraform destroy -var-file="dev.tfvars"
 ```
+
+## Pre-commit and Code Quality
+
+The following tools must be installed to ensure code meets the standards required to submit to the repo.
+
+```bash
+brew install pre-commit
+brew install tflint
+brew install trivy
+```
+
+Install git hooks
+
+This will automatically run: terraform fmt, terraform validate, tflint and trivy (fails on high and critical issues only)
+
+```bash
+pre-commit install
+```
+
+Test the hook.
+
+```bash
+pre-commit run --all-files
+```
