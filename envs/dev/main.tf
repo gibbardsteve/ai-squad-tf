@@ -1,15 +1,26 @@
-resource "random_id" "suffix" {
-  byte_length = 4
-}
+# Add compute instance to run ai agent
+module "ai_squad_server" {
+  source = "../../modules/compute_instance"
 
-resource "google_storage_bucket" "tf_test" {
-  name                        = "aiagent-scratch-tf-test-${random_id.suffix.hex}"
-  location                    = "EU"
-  uniform_bucket_level_access = true
+  project_id   = var.project_id
+  name         = "ai-squad-server"
+  zone         = "europe-west2-a"
+  machine_type = "n2d-standard-2"
 
-  versioning {
-    enabled = true
+  # If you want SSH via IAP / no public IP, keep this false
+  enable_public_ip = false
+
+  # Optional: if you have a custom VPC/subnet, set these.
+  # network    = "default"
+  # subnetwork = null
+
+  data_disk_size_gb = 100
+
+  labels = {
+    env         = "dev"
+    project     = "ai-agent"
+    deployed_by = "terraform"
   }
 
-  public_access_prevention = "enforced"
+  tags = ["ai-squad-server"]
 }

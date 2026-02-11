@@ -72,3 +72,11 @@ Test the hook.
 ```bash
 pre-commit run --all-files
 ```
+
+### Login to the compute engine server
+
+SSH from the cli
+
+```bash
+gcloud compute ssh <server-name>
+```
